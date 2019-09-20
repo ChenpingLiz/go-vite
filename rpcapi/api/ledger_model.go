@@ -311,7 +311,7 @@ func ledgerToRpcBlock(chain chain.Chain, lAb *ledger.AccountBlock) (*AccountBloc
 	rpcBlock.QuotaUsed = &quotaUsed
 	rpcBlock.TotalQuota = rpcBlock.QuotaUsed
 
-	utUsed := Float64ToString(float64(lAb.QuotaUsed)/float64(quota.QuotaForUtps), 4)
+	utUsed := Float64ToString(float64(lAb.QuotaUsed)/float64(quota.QuotaPerUt), 4)
 	rpcBlock.UtUsed = &utUsed
 
 	// FromAddress & ToAddress
@@ -392,7 +392,7 @@ type RpcTokenBalanceInfo struct {
 type AccountInfo struct {
 	Address        types.Address                      `json:"address"`
 	BlockCount     string                             `json:"blockCount"`
-	BalanceInfoMap map[types.TokenTypeId]*BalanceInfo `json:"balanceInfo,omitempty"`
+	BalanceInfoMap map[types.TokenTypeId]*BalanceInfo `json:"balanceInfoMap,omitempty"`
 }
 
 type BalanceInfo struct {
